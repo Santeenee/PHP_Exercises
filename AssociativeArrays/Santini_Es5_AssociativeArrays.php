@@ -18,7 +18,6 @@
 
         echo "Persona con età minima:<br>";
         //SOME CODE... 
-        //puoi usare le funzioni... ma quali???
 
         
     ?>
