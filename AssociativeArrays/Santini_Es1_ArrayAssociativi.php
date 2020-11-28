@@ -12,17 +12,19 @@
         echo "Stampo l'array ordinato (per chiave)<br>";
 
         ksort($DOCENTI);
-        foreach ($DOCENTI as $key => $value) {
+        /*foreach ($DOCENTI as $key => $value) {
             echo $key . '=>' . $value . ' ';
-        }
+        }*/
+        print_r($DOCENTI);
         unset($key, $value);
 
         echo "<br><br>Stampo l'array ordinato (per valore)<br>";
 
         asort($DOCENTI);
-        foreach ($DOCENTI as $key => $value) {
+        /*foreach ($DOCENTI as $key => $value) {
             echo $key . '=>' . $value . ' ';
-        }
+        }*/
+        print_r($DOCENTI);
 
     ?>
 </body>
