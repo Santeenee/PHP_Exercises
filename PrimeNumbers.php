@@ -24,30 +24,21 @@
         $array = [];
         $firstArray = [];      //it will become useful later... (to make a table)
 
-        for ($i=0; $i < 100; $i++) 
-        { 
+        for ($i=0; $i < 100; $i++) {
+
             $array[$i] = $i+1;
             $firstArray[] = $array[$i];     //copying $array into $firstArray
         }
 
         unset($array[0]);   //1 isn't a prime number
 
-        for ($i=1; $i < 100; $i++) 
-        { 
-            if( !($array[$i] == 2 || $array[$i] == 3 || $array[$i] == 5 || $array[$i] == 7)) //if NOT
-            {
-                if($array[$i]%2==0)
-                {
+        for ($i=1; $i < 100; $i++) { 
+
+            if( !($array[$i] == 2 || $array[$i] == 3 || $array[$i] == 5 || $array[$i] == 7)) { //if NOT
+
+                if($array[$i]%2==0 || $array[$i]%3==0 || $array[$i]%5==0 || $array[$i]%7==0 ) {
+                    
                     unset($array[$i]);  //unset is used to remove (unset) a variable, in this case we are removing a specific var inside the array
-                }else if ($array[$i]%3==0)
-                {
-                    unset($array[$i]);
-                }else if ($array[$i]%5==0) 
-                {
-                    unset($array[$i]);
-                }else if ($array[$i]%7==0) 
-                {
-                    unset($array[$i]);
                 }
             }
         }
