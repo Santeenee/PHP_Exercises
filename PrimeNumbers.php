@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        table, tr, td{
+        table, tr, td, th{
             border: solid black 1px;
             padding: 5px;
-            background-color: lightgreen;
+            background-color: lightseagreen;
         }
         td{
+            background-color: lightgray;
+        }
+        th{
             background-color: white;
         }
     </style>
@@ -18,11 +21,14 @@
 <body>
     <?php
         $array = [];
+        $firstArray = [];
 
         for ($i=0; $i < 100; $i++) 
         { 
             $array[$i] = $i+1;
+            $firstArray[] = $array[$i];   //it will become useful later... (to make a table)
         }
+
         
         for ($i=0; $i < 100; $i++) 
         { 
@@ -44,30 +50,34 @@
             }
         }
 
-        $array = array_values($array);  //rearranging indexes...
+        //$array = array_values($array);  //rearranging indexes...
 
         echo "<br><h2>Prime numbers calculated with the Sieve of Eratosthenes:</h2>";
        
         //******************* TABLE *******************/
 
         echo "<table>";
-        echo "<tr>";
+        $k = 0;
+        for ($i=0; $i < 10; $i++) { 
+            echo "<tr>";
 
-        for ($i=0; $i < count($array); $i++) { 
+            for ($j=0; $j < 10; $j++) { 
 
-            echo "<th>$i</th>";
+                //$temp = $j + $i;
+                if ( !(isset($array[$k])) ) {
+                    
+                    echo "<td>{$firstArray[$k]}</td>";   //NON prime numbers
 
+                } else {
+                    echo "<th>{$array[$k]}</th>";        //prime numbers
+                }
+                $k++;
+            }
+            echo "</tr>";
         }
-        echo "</tr>";
-
-        echo "<tr>";
-        for ($i=0; $i <count($array); $i++) { 
-            
-            echo "<td>{$array[$i]}</td>";   //prime numbers
-            
-        }
-        echo "</tr>";
         echo "</table>";
+
+
     ?>
 </body>
 </html>
