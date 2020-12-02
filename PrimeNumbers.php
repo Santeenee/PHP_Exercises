@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         table, tr, td, th{
+            text-align: center;
             border: solid black 1px;
-            padding: 5px;
+            padding: 7px;
             background-color: lightseagreen;
         }
         td{
@@ -16,21 +17,22 @@
             background-color: white;
         }
     </style>
-    <title>Calculating prime numbers</title>
+    <title>Sieve of Eratosthenes</title>
 </head>
 <body>
     <?php
         $array = [];
-        $firstArray = [];
+        $firstArray = [];      //it will become useful later... (to make a table)
 
         for ($i=0; $i < 100; $i++) 
         { 
             $array[$i] = $i+1;
-            $firstArray[] = $array[$i];   //it will become useful later... (to make a table)
+            $firstArray[] = $array[$i];     //copying $array into $firstArray
         }
 
-        
-        for ($i=0; $i < 100; $i++) 
+        unset($array[0]);   //1 isn't a prime number
+
+        for ($i=1; $i < 100; $i++) 
         { 
             if( !($array[$i] == 2 || $array[$i] == 3 || $array[$i] == 5 || $array[$i] == 7)) //if NOT
             {
@@ -50,11 +52,9 @@
             }
         }
 
-        //$array = array_values($array);  //rearranging indexes...
-
         echo "<br><h2>Prime numbers calculated with the Sieve of Eratosthenes:</h2>";
        
-        //******************* TABLE *******************/
+        //******************* TABLE *******************//
 
         echo "<table>";
         $k = 0;
@@ -64,11 +64,12 @@
             for ($j=0; $j < 10; $j++) { 
 
                 //$temp = $j + $i;
-                if ( !(isset($array[$k])) ) {
+                if ( !isset($array[$k]) ) {
                     
                     echo "<td>{$firstArray[$k]}</td>";   //NON prime numbers
 
                 } else {
+
                     echo "<th>{$array[$k]}</th>";        //prime numbers
                 }
                 $k++;
@@ -76,7 +77,6 @@
             echo "</tr>";
         }
         echo "</table>";
-
 
     ?>
 </body>
